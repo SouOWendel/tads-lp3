@@ -1,19 +1,34 @@
 package br.edu.ifsp.orderflow;
 
-/**
- * Ponto de partida do OrderFlow — LP3 · IFSP-SPO · 2026/2.
- *
- * Este arquivo existe apenas para conferir o ambiente (JDK, IDE e Maven).
- * O sistema começa a ser construído no Encontro 3 — e este Main será o
- * primeiro arquivo a crescer.
- */
+import br.edu.ifsp.orderflow.domain.Cliente;
+import br.edu.ifsp.orderflow.domain.ItemPedido;
+import br.edu.ifsp.orderflow.domain.Produto;
+import java.math.BigDecimal;
+
 public class Main {
 
     public static void main(String[] args) {
-        // Saida em ASCII puro de proposito: terminais Windows sem UTF-8
-        // transformariam acentos e travessoes em lixo na primeira execucao.
-        System.out.println("OrderFlow - LP3 (IFSP Campus Sao Paulo) - 2026/2");
-        System.out.println("Ambiente OK. Java " + System.getProperty("java.version"));
-        System.out.println("Pronto para o Encontro 3.");
+        Produto p1 = new Produto("SKU-1", "Mouse sem fio", new BigDecimal("150.00"));
+
+        Produto p2 = new Produto("SKU-2", "Teclado mecânico", new BigDecimal("350.00"));
+
+        Produto p3 = new Produto("SKU-3", "Monitor", new BigDecimal("550.00"));
+
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+
+        Cliente c1 = new Cliente("CLIENT-1", "Wendel Henrique", "souowendel@gmail.com");
+
+        System.out.println(c1);
+
+        ItemPedido ip1 = new ItemPedido(p1, 2);
+        ItemPedido ip2 = new ItemPedido(p2, 3);
+        ItemPedido ip3 = new ItemPedido(p3, 4);
+
+        System.out.println(ip1);
+        System.out.println(ip2);
+        System.out.println(ip3);
+
     }
 }
