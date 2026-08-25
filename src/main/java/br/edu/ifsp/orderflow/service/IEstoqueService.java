@@ -14,8 +14,9 @@ public interface IEstoqueService {
     /**
      * Quantidade disponível para um produto.
      * @param produto
+     * @return a quantidade disponível do produto, ou null se o produto não estiver no estoque.
      */
-    public void quantidadeDisponivel(Produto produto);
+    public Integer quantidadeDisponivelEstoque(Produto produto);
 
     /**
      * Tentar reservar o estoque.

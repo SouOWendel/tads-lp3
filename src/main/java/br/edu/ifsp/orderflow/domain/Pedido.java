@@ -13,7 +13,8 @@ public class Pedido {
     private final String id;
     private final Cliente cliente;
     private final List<ItemPedido> itens;
-    private EStatusPedido status;
+		// private boolean foiReservado;
+    private final EStatusPedido status;
 
 
     public Pedido (Cliente cliente) {
@@ -21,6 +22,7 @@ public class Pedido {
         this.cliente = cliente;
         this.itens = new ArrayList<ItemPedido>();
         this.status = EStatusPedido.CRIADO;
+				// this.foiReservado = false;
     }
 
     public String getId() {
@@ -57,6 +59,7 @@ public class Pedido {
     }
 
     public void marcarComoPago() { this.status = EStatusPedido.PAGO; };
+		public void marcarComoCriado() { this.status = EStatusPedido.CRIADO; };
     public void marcarComoCancelado() { this.status = EStatusPedido.CANCELADO; };
 
 }
