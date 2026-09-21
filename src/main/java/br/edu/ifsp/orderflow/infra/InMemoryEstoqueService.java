@@ -32,7 +32,15 @@ public class InMemoryEstoqueService implements IEstoqueService {
         return this.estoque.getOrDefault(produto.getId(), 0);
     }
 
-    // Queremos reservar quantidades que foram marcadas no pedido, tirando elas do estoque.
+	private void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
+	}
+
+	// Queremos reservar quantidades que foram marcadas no pedido, tirando elas do estoque.
     @Override
     public boolean reservar(Pedido pedido) {
         List<ItemPedido> itens = pedido.getItens();
@@ -46,6 +54,7 @@ public class InMemoryEstoqueService implements IEstoqueService {
 						}
 				}
 
+				this.sleep(50);
 				for (ItemPedido item : itens) {
 					Produto produto = item.getProduto();
 					String produtoId = produto.getId();
