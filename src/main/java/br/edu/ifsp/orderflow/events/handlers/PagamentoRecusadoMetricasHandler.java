@@ -4,9 +4,10 @@ import br.edu.ifsp.orderflow.events.IEventHandler;
 import br.edu.ifsp.orderflow.events.PagamentoRecusado;
 
 public class PagamentoRecusadoMetricasHandler implements IEventHandler<PagamentoRecusado> {
+
     private final Metricas metricas;
 
-    PagamentoRecusadoMetricasHandler(Metricas metricas) {
+    public PagamentoRecusadoMetricasHandler(Metricas metricas) {
         this.metricas = metricas;
     }
 

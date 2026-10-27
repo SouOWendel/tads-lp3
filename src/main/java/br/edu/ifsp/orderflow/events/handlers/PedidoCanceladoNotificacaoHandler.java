@@ -6,6 +6,8 @@ import br.edu.ifsp.orderflow.events.PedidoCancelado;
 import br.edu.ifsp.orderflow.service.INotificacaoService;
 import br.edu.ifsp.orderflow.service.IPedidoRepository;
 
+import java.util.Optional;
+
 public class PedidoCanceladoNotificacaoHandler implements IEventHandler<PedidoCancelado> {
 
     private final IPedidoRepository pedidoRepository;
@@ -21,16 +23,18 @@ public class PedidoCanceladoNotificacaoHandler implements IEventHandler<PedidoCa
 
     @Override
     public void handle(PedidoCancelado event) {
+
         Optional<Pedido> pedidoEncontrado = this.pedidoRepository.findById(event.pedidoId());
 
-                if(pedidoEncontrado.isPresent()) {
-                    Pedido pedido = pedidoEncontrado.get();
+        if (pedidoEncontrado.isPresent()) {
 
-                    this.notificacaoService.notificar(
-                            pedido.getCliente(),
-                            "Pedido " + pedido.getidCurto() + " cancelado: " + event.motivo()
-                    );
-                }
+            Pedido pedido = pedidoEncontrado.get();
+
+            this.notificacaoService.notificar(
+                    pedido.getCliente(),
+                    "Pedido " + pedido.getIdCurto() + " cancelado: " + event.motivo()
+            );
+        }
     }
 
     @Override
